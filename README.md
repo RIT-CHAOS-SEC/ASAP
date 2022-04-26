@@ -1,6 +1,6 @@
 # ASAP: Reconciling Asynchronous Real-Time Operations and Proofs of Execution in Simple Embedded Systems
 
-##### ASAP paper (DAC '22)
+##### ASAP paper (Accepted to DAC '22)
 
 Embedded devices are increasingly ubiquitous and their importance is hard to overestimate. While they often support safety-critical functions (e.g., in medical devices and sensor-alarm combinations), they are usually implemented under strict cost/energy budgets, using low-end microcontroller units (MCUs) that lack sophisticated security mechanisms. Motivated by this issue, recent work developed architectures capable of generating Proofs of Execution (PoX) for the correct/expected software in potentially compromised low-end MCUs.
 
@@ -8,6 +8,8 @@ In practice, this capability can be leveraged to provide ``integrity from birth'
 We argue that lack of asynchronous capabilities (i.e., interrupts within PoX) can obscure PoX usefulness, as several applications require processing real-time and asynchronous events.
 
 To bridge this gap, we propose, implement, and evaluate an (A)rchitecture for (S)ecure (A)synchronous (P)rocessing in PoX. ASAP is secure under full software compromise, enables asynchronous \PoX, and incurs less hardware overhead than prior work.
+
+Author Version is available [here](https://people.rit.edu/ac7717/asap.pdf)
 
 ## Built upon APEX
 
