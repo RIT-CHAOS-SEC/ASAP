@@ -1,4 +1,3 @@
-
 module  VAPE_output_protection (
     clk,
     //

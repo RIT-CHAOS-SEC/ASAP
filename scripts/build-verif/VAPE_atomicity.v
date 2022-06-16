@@ -4,7 +4,7 @@ module  VAPE_atomicity (
     pc,     
     ER_min,
     ER_max,
-    irq,
+//    irq,
 
     exec   //OUTPUT
 );
@@ -13,7 +13,7 @@ input		    clk;
 input   [15:0]  pc;
 input   [15:0]  ER_min;
 input   [15:0]  ER_max;
-input		irq;
+//input		irq;
 output          exec;
 
 // FSM States //////////////////////////////////////////////////////////

@@ -15,9 +15,8 @@
 
 // ERMIN/MAX_VAL should correspond to address of dummy_function
 // Compile, verify in LST, compile again after modifying
-													// Valid ISR // Invalid ISR // Invalid ISR & IVT Write
-#define ERMIN_VAL 0xe196 // address of startER 		// 0xe196    // 0xe1be      // 0xe1be
-#define ERMAX_VAL 0xe1dc // address of exitER		// 0xe1dc	 // 0xe1dc 		// 0xe1e2
+#define ERMIN_VAL 0xe1be 
+#define ERMAX_VAL 0xe1dc
 #define ORMIN_VAL 0x200 
 #define ORMAX_VAL 0x210
 
@@ -38,17 +37,10 @@ __attribute__(( section( ".exec.body"))) void dummy_function() {
 	uint8_t *out = (uint8_t*)(ORMIN_VAL);
 	int i;
 	for(i=0; i<32; i++) out[i] = i+i;
-
-	///**
-	// Modify IVT value, causing a violation.
-    // EXEC flag now should be 0 
-    *((uint16_t*)(0xFFF2)) = 0xE19C; // Set the ivt entry for this isr to a random address in the ER
-	//**/
 }
 
 //TCB ISR
-//__attribute__(( section( ".exec.body"))) ISR(PORT1, TCB){ // test ISR in ER
-ISR(PORT1, TCB){	// test ISR outside ER -- placed at 0xe0ce
+ISR(PORT1, TCB){	// test ISR outside ER
 	P1IFG &= ~P1IFG;
 	P5OUT = ~P5OUT;
 }

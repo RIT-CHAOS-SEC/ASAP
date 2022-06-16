@@ -25,8 +25,8 @@ parameter kill = 3'b100;
 parameter RESET_HANDLER = 16'hfffe;
 
 // MACROS ///////////////////////////////////////////
-parameter SMEM_BASE = 16'hA000;
-parameter SMEM_SIZE = 16'h4000;
+parameter SMEM_BASE = 16'hE000;
+parameter SMEM_SIZE = 16'h1000;
 parameter LAST_SMEM_ADDR = SMEM_BASE + SMEM_SIZE - 2;
 /////////////////////////////////////////////////////
 
@@ -47,7 +47,7 @@ wire is_first_rom = pc == SMEM_BASE;
 wire is_last_rom = pc == LAST_SMEM_ADDR;
 wire is_in_rom = is_mid_rom | is_first_rom | is_last_rom;
 wire is_outside_rom = pc < SMEM_BASE | pc > LAST_SMEM_ADDR;
-always @(*)
+always @(posedge clk)
 begin
     case (pc_state)
         notRC:
@@ -107,7 +107,7 @@ begin
 end
 
 ////////////// OUTPUT LOGIC //////////////////////////////////////
-always @(*)
+always @(posedge clk)
 begin
     if ( (
         (pc_state == fstRC && !is_mid_rom && !is_first_rom) ||

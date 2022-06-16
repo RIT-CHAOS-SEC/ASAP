@@ -1,5 +1,5 @@
 
-module  VAPE_immutability (
+module  ASAP_immutability (
     clk,
     //
     pc,
@@ -14,8 +14,6 @@ module  VAPE_immutability (
     ER_max,
     
     exec
-//    ,
-//    exec_meta
 );
 
 input		clk;
@@ -27,14 +25,12 @@ input           dma_en;
 input   [15:0]  ER_min;
 input   [15:0]  ER_max;
 output          exec;
-//output          exec_meta;
 
 // State codes
 parameter EXEC  = 1'b0, ABORT = 1'b1;
 //-------------Internal Variables---------------------------
 reg             state;
 reg             exec_res;
-//reg             exec_meta_res;
 //
 
 // METADATA Region
@@ -63,31 +59,19 @@ wire is_fst_ER = (pc == ER_min);
 
 wire mem_change = is_write_CPU || is_write_DMA;
 
-//wire is_write_IVT =  (data_addr >= IVT_min && data_addr <= IVT_max) && data_en;
-//wire is_write_DMA_IVT = (dma_addr >= IVT_min && dma_addr <= IVT_max) && dma_en;
-
-//wire mem_change = (is_write_ER) || is_write_DMA_ER || is_write_IVT || is_write_DMA_IVT;// || is_write_META || is_write_DMA_META;
-
-always @(posedge clk)
-if( state == EXEC && mem_change)// || META_change)) 
+always @(*)
+if( state == EXEC && mem_change) 
     state <= ABORT;
-else if (state == ABORT && is_fst_ER && !mem_change)// && !META_change)
+else if (state == ABORT && is_fst_ER && !mem_change)
     state <= EXEC;
 else state <= state;
 
-always @(posedge clk)
+always @(*)
 if (state == EXEC)
     exec_res <= !mem_change;
 else if (state == ABORT)
     exec_res <= is_fst_ER && !mem_change;
 else exec_res <= 1'b1;
-
-//always @(posedge clk)
-//if (state == EXEC)
-//    exec_ivt <= !ivt_change;
-//else if (state == ABORT)
-//    exec_ivt <= is_fst_ER && !ivt_change;
-//else exec_ivt <= 1'b1;
 
 assign exec = exec_res;
 

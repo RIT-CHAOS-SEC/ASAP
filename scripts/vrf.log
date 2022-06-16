@@ -25,152 +25,54 @@ WARNING *** PERMISSION FROM PRINCETON UNIVERSITY.                     ***
 WARNING *** Please contact Sharad Malik (malik@ee.princeton.edu)      ***
 WARNING *** for details.                                              ***
 
-Starting the batch interaction.
-Parsing file "./build-verif/hwmod_generated.smv" ..... done.
-...done
-
-Heuristics "basic" is going to be used to create varordering statically
-Construction of BDD model is delayed due to use of COI
-Using cone of influence
-evaluating LTL specification  G ((("dma_en" & dma_in_IVT) | ("data_wr" & daddr_in_IVT)) -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((("dma_en" & dma_in_IVT) | ("data_wr" & daddr_in_IVT)) -> !"exec")  is true
-Using cone of influence
-evaluating LTL specification  G ((!pc_in_srom & access_key) -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((!pc_in_srom & access_key) -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G ((pc_in_srom & "irq") -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((pc_in_srom & "irq") -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G (((pc_not_in_srom & ("data_en" | "data_wr")) & daddr_in_sdata) -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (((pc_not_in_srom & ("data_en" | "data_wr")) & daddr_in_sdata) -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G ((((pc_in_srom & "data_wr") & daddr_not_in_sdata) & daddr_not_in_HMAC) -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((((pc_in_srom & "data_wr") & daddr_not_in_sdata) & daddr_not_in_HMAC) -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G (dma_access_key -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (dma_access_key -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G (("dma_en" & pc_in_srom) -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (("dma_en" & pc_in_srom) -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G (dma_access_X_stack -> "reset") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (dma_access_X_stack -> "reset")  is true
-Using cone of influence
-evaluating LTL specification  G ((("data_wr" & daddr_in_ER) | ("dma_en" & dma_addr_in_ER)) -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((("data_wr" & daddr_in_ER) | ("dma_en" & dma_addr_in_ER)) -> !"exec")  is true
-Using cone of influence
-evaluating LTL specification  G ((pc_in_ER & !next(pc_in_ER)) -> (pc_last_ER | !next("exec"))) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((pc_in_ER & !next(pc_in_ER)) -> (pc_last_ER | !next("exec")))  is true
-Using cone of influence
-evaluating LTL specification  G ((!pc_in_ER & next(pc_in_ER)) -> (next(pc_fst_ER) | !next("exec"))) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((!pc_in_ER & next(pc_in_ER)) -> (next(pc_fst_ER) | !next("exec")))  is true
-Using cone of influence
-evaluating LTL specification  G (((((not_pc_in_ER & "data_wr") & daddr_in_OR) | ("dma_en" & dma_addr_in_OR)) | (pc_in_ER & "dma_en")) -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (((((not_pc_in_ER & "data_wr") & daddr_in_OR) | ("dma_en" & dma_addr_in_OR)) | (pc_in_ER & "dma_en")) -> !"exec")  is true
-Using cone of influence
-evaluating LTL specification  G (((ER_BASE >= LAST_ER | OR_BASE >= LAST_OR) | (ER_BASE <= LAST_SMEM_ADDR & SMEM_BASE <= LAST_ER)) -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (((ER_BASE >= LAST_ER | OR_BASE >= LAST_OR) | (ER_BASE <= LAST_SMEM_ADDR & SMEM_BASE <= LAST_ER)) -> !"exec")  is true
-Using cone of influence
-evaluating LTL specification  G ((("data_wr" & daddr_in_META) | ("dma_en" & dma_addr_in_META)) -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((("data_wr" & daddr_in_META) | ("dma_en" & dma_addr_in_META)) -> !"exec")  is true
-Using cone of influence
-evaluating LTL specification  G ((((("exec1" & "exec2") & "exec3") & "exec4") & "exec5") <-> "exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ((((("exec1" & "exec2") & "exec3") & "exec4") & "exec5") <-> "exec")  is true
-Using cone of influence
-evaluating LTL specification  G (!"exec1" -> ((!"exec1" U pc_fst_ER) |  G !"exec1")) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (!"exec1" -> ((!"exec1" U pc_fst_ER) |  G !"exec1"))  is true
-Using cone of influence
-evaluating LTL specification  G (!"exec2" -> ((!"exec2" U pc_fst_ER) |  G !"exec2")) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (!"exec2" -> ((!"exec2" U pc_fst_ER) |  G !"exec2"))  is true
-Using cone of influence
-evaluating LTL specification  G (!"exec3" -> ((!"exec3" U pc_fst_ER) |  G !"exec3")) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (!"exec3" -> ((!"exec3" U pc_fst_ER) |  G !"exec3"))  is true
-Using cone of influence
-evaluating LTL specification  G (!"exec4" -> ((!"exec4" U pc_fst_ER) |  G !"exec4")) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (!"exec4" -> ((!"exec4" U pc_fst_ER) |  G !"exec4"))  is true
-Using cone of influence
-evaluating LTL specification  G (!"exec5" -> ((!"exec5" U pc_fst_ER) |  G !"exec5")) 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G (!"exec5" -> ((!"exec5" U pc_fst_ER) |  G !"exec5"))  is true
-Using cone of influence
-evaluating LTL specification  G ("puc" -> !"exec") 
-Flattening the generated tableau........ done
-Creating LTL tableau variables...
 -- specification  G ("puc" -> !"exec")  is true
 ######################################################################
 Runtime Statistics
 ------------------
 Machine name: gol3400-07
-User time   363.431 seconds
-System time  0.268 seconds
+User time   383.904 seconds
+System time  1.000 seconds
 
 Average resident text size       =     0K
 Average resident data+stack size =     0K
-Maximum resident size            = 402664K
+Maximum resident size            = 398166K
 
 Virtual text size                =  8139K
-Virtual data size                = 702313K
+Virtual data size                = 736921K
     data size initialized        =  3424K
     data size uninitialized      =   178K
-    data size sbrk               = 698711K
+    data size sbrk               = 733319K
 Virtual memory limit             = -2147483648K (-2147483648K)
 
 Major page faults = 0
-Minor page faults = 213291
+Minor page faults = 220029
 Swaps = 0
 Input blocks = 0
-Output blocks = 0
+Output blocks = 16
 Context switch (voluntary) = 1
-Context switch (involuntary) = 1635
+Context switch (involuntary) = 14032
 ######################################################################
 BDD statistics
 --------------------
-BDD nodes allocated: 17038021
+BDD nodes allocated: 15465048
 --------------------
-WARNING: Model Statistics is not currently available
-if cone of influence reduction has been enabled.
-Quitting the Compass package... 
-Quitting the BMC package... 
-Done 
-
-Successful termination
-

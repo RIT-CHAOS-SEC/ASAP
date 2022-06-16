@@ -1,15 +1,21 @@
 
 module  memory_protection (
     clk,
+    //
     pc,
+    //
     data_addr,
     data_en,
+    //
 	dma_addr,
     dma_en,
+    //
     ER_min,
     ER_max,
+    //
     IVT_min,
     IVT_max,
+    
     exec
 );
 

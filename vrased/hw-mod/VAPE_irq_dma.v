@@ -3,7 +3,6 @@ module  irq_dma (
     clk,
     //
     pc,
-    irq,
     dma_en,
     //
     ER_min,
@@ -14,7 +13,6 @@ module  irq_dma (
 
 input		clk;
 input   [15:0]  pc;
-input           irq;
 input           dma_en;
 input   [15:0]  ER_min;
 input   [15:0]  ER_max;
@@ -33,7 +31,6 @@ initial
         exec_res = 1'b0;
     end
 
-//wire irq_or_dma_in_ER = (dma_en || irq) && (pc >= ER_min && pc <= ER_max);
 wire irq_or_dma_in_ER = dma_en && (pc >= ER_min && pc <= ER_max);
 wire is_fst_ER = pc == ER_min;
 

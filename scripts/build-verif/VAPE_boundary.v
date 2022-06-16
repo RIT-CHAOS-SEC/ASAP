@@ -13,9 +13,6 @@ module  VAPE_boundary (
     ER_min,
     ER_max,
     //
-    META_min,
-    META_max,
-
     exec
 );
 
@@ -27,8 +24,6 @@ input   [15:0]  dma_addr;
 input           dma_en;
 input   [15:0]  ER_min;
 input   [15:0]  ER_max;
-input   [15:0]  META_min;
-input   [15:0]  META_max;
 output          exec;
 
 // State codes
@@ -37,6 +32,10 @@ parameter EXEC  = 1'b0, ABORT = 1'b1;
 reg             state;
 reg             exec_res;
 //
+
+// METADATA Region
+parameter META_min = 16'h0140;
+parameter META_max = 16'h0140 + 16'h002A;
 
 initial
     begin
@@ -49,7 +48,7 @@ wire is_write_DMA_META = dma_en && (dma_addr >= META_min && dma_addr <= META_max
 wire is_fst_ER = (pc == ER_min);
 
 
-wire META_change = is_write_META || is_write_DMA_META; // || prev_ER_min != ER_min || prev_ER_max != ER_max;
+wire META_change = is_write_META || is_write_DMA_META;
 
 always @(*)
 if( state == EXEC && META_change) 

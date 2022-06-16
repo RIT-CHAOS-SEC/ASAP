@@ -10,20 +10,14 @@ install :
 	sh build.sh ; \
 	cp verilog2smv.sh ../
 
-simple_app :
-	sh build/run "simple_app" true
+test_invalid_ISR :
+	sh build/run "test_invalid_ISR" true
 
-violation_forge_OR :
-	sh build/run "violation_forge_OR" true
+test_valid_ISR :
+	sh build/run "test_valid_ISR" true
 
-violation_forge_ER :
-	sh build/run "violation_forge_ER" true
-
-violation_forge_META :
-	sh build/run "violation_forge_META" true
-
-test :
-	sh build/run "test" true
+test_write_IVT :
+	sh build/run "test_write_IVT" true
 
 verify :
 	sh verif-tools/run

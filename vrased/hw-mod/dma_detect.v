@@ -16,8 +16,8 @@ input			irq;
 output          reset;
 
 // MACROS ///////////////////////////////////////////
-parameter SMEM_BASE = 16'hE000;
-parameter SMEM_SIZE = 16'h1000;
+parameter SMEM_BASE = 16'hA000;
+parameter SMEM_SIZE = 16'h4000;
 /////////////////////////////////////////////////////
 
 
@@ -44,7 +44,6 @@ wire is_in_rom = is_mid_rom | is_first_rom | is_last_rom;
 wire is_outside_rom = pc < SMEM_BASE | pc > LAST_SMEM_ADDR;
 
 wire invalid_dma = is_in_rom && (dma_en || irq);
-//wire invalid_dma = is_in_rom && dma_en;
 
 always @(posedge clk)
 if( state == RUN && invalid_dma) 

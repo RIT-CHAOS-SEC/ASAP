@@ -4,7 +4,6 @@
 `include "dma_AC.v"	
 `include "dma_detect.v"	
 `include "dma_X_stack.v"
-`include "proof_reset.v"
 
 `ifdef OMSP_NO_INCLUDE
 `else
@@ -46,11 +45,7 @@ parameter SMEM_BASE = 16'hA000;
 parameter SMEM_SIZE = 16'h4000;
 //
 parameter KMEM_BASE = 16'h6A00;
-parameter KMEM_SIZE = 16'h001F;
-
-// Base & Size of Interrupt Vector Table
-parameter IVT_BASE = 16'hFFE0;
-parameter IVT_SIZE = 16'h001F;
+parameter KMEM_SIZE = 16'h0040;
 
 /////////////////////////////////////////////////////
 
@@ -145,5 +140,6 @@ dma_X_stack #(
 );
 
 assign reset = X_stack_reset | AC_reset | dma_AC_reset | dma_detect_reset | dma_X_stack_reset | atomicity_reset;
+
 
 endmodule

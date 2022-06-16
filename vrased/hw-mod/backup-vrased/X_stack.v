@@ -18,17 +18,17 @@ input           w_en;
 output          reset;
 
 // MACROS ///////////////////////////////////////////
-parameter SDATA_BASE = 16'h400;
-parameter SDATA_SIZE = 16'hC00;
+parameter SDATA_BASE = 16'hA000;
+parameter SDATA_SIZE = 16'h1000;
 //
 parameter HMAC_BASE = 16'h8000;
-parameter HMAC_SIZE = 16'h0020;
+parameter HMAC_SIZE = 16'h001F;
 //
-parameter SMEM_BASE = 16'hA000;
-parameter SMEM_SIZE = 16'h4000;
+parameter SMEM_BASE = 16'hE000;
+parameter SMEM_SIZE = 16'h1000;
 //
 parameter KMEM_BASE = 16'hFEFE;
-parameter KMEM_SIZE = 16'h0040;
+parameter KMEM_SIZE = 16'h001F;
 /////////////////////////////////////////////////////
 
 
@@ -61,7 +61,7 @@ wire violation1 = pc_not_in_srom && daddr_in_sdata && (r_en || w_en);
 wire violation2 = pc_in_srom && w_en && daddr_not_in_sdata && daddr_not_in_HMAC;
 
 // State transition logic//////
-always @(*)
+always @(posedge clk)
 if(state == RUN && pc_not_in_srom && daddr_in_sdata && (r_en || w_en))
     state <= KILL;
 else if (state == RUN && pc_in_srom && w_en && daddr_not_in_sdata && daddr_not_in_HMAC)
@@ -72,7 +72,7 @@ else state <= state;
 //////////////////////////////
 
 // Output logic //////////////
-always @(*)
+always @(posedge clk)
 if( 
     (state == RUN && pc_not_in_srom && daddr_in_sdata && (r_en || w_en)) ||
     (state == RUN && pc_in_srom && w_en && daddr_not_in_sdata && daddr_not_in_HMAC)

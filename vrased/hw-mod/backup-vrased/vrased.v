@@ -45,8 +45,8 @@ parameter SMEM_BASE = 16'hA000;
 parameter SMEM_SIZE = 16'h4000;
 //
 parameter KMEM_BASE = 16'h6A00;
-parameter KMEM_SIZE = 16'h0040;
-
+parameter KMEM_SIZE = 16'h001F;
+//
 /////////////////////////////////////////////////////
 
 parameter RESET_HANDLER = 16'h0000;
@@ -140,6 +140,5 @@ dma_X_stack #(
 );
 
 assign reset = X_stack_reset | AC_reset | dma_AC_reset | dma_detect_reset | dma_X_stack_reset | atomicity_reset;
-
 
 endmodule
